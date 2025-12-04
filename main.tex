@@ -1,0 +1,361 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\definecolor{aiAccent}{HTML}{956CFD} % accent for AI-focused work
+\definecolor{systemAccent}{HTML}{007D99} % accent for systems-focused work
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Hongbin's CV},
+    pdfauthor={Hongbin Zhong},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    % \usepackage[T1]{fontenc} % this breaks sb2nov
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0cm} % set column seperation
+\makeatletter
+\let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Hongbin - Page \thepage{} of \pageref*{LastPage}}
+}{}{} % replace number by desired string
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\circ$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\layerdot}[1]{\textcolor{#1}{\Large\textbullet}} % colored symbol for experience legend
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Hongbin Zhong}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Atlanta, US}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:youremail@yourdomain.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}hzhong81@gatech.edu}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+90-541-999-99-99}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}470-437-8071}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://rjzhb.github.io/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}https://rjzhb.github.io/}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/hongbin-zhong-9b2791273/}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}Hongbin Zhong}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/rjzhb}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}rjzhb}}%
+    \end{header}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+
+    \section{Research Interest}
+            \textbf{AI Agents \& Cognitive Architectures for Planning, Reasoning, and Memory}\\
+            \textbf{High-Performance and Secure Data Retrieval \& Storage Systems}\\
+            \textbf{End-to-End LLM Inference with Information Retrieval}
+    \section{Education}
+
+\begin{tabular}{p{0.8\textwidth}r}
+    \textbf{Georgia Institute of Technology} & \textit{Aug 2024--2029 (expected)} \\
+    Ph.D. in Computer Science \\
+    \textit{Advisor:} Kexin Rong \\
+    \\
+    \textbf{Northeastern University} & \textit{2020--2024} \\
+    B.S. in Computer Science 
+\end{tabular}
+
+\section*{Preprints And Draft}
+\begin{enumerate}
+    \item \layerdot{aiAccent}\ \textbf{Beyond Screenshots: A Dynamic State-Machine Memory and Global Programmatic Planner for Web Agents} \\
+    \textbf{Hongbin Zhong*} with Microsoft Research collaborators \\
+    \textit{draft}
+
+    \item \layerdot{systemAccent}\ \textbf{HoneyBee: Efficient Role-based Access Control for Vector Databases via Dynamic Partitioning} \\
+    \textbf{Hongbin Zhong}, Matthew Lentz, Nina Narodytska, Adriana Szekeres, Kexin Rong \\
+    \textit{Under Revision for \textbf{SIGMOD 2026}} \\
+    \href{https://arxiv.org/abs/2505.01538}{arXiv}
+\end{enumerate}
+
+
+\section*{Publications}
+
+\begin{enumerate}
+    \item \layerdot{systemAccent}\ \textbf{Fast Hypothetical Updates Evaluation} \\
+    Haneen Mohammed*, Alexander Yao*, Charlie Summers*, Hongbin Zhong, Gromit Yeuk-Yin Chan, Subrata Mitra, Lampros Flokas, Eugene Wu \\
+    \textit{SIGMOD 2025 Demo}
+
+    \item \layerdot{systemAccent}\ \textbf{FaDE: More Than a Million What-ifs Per Second} \\
+    Haneen Mohammed*, Alexander Yao*, Charlie Summers*, Hongbin Zhong, Gromit Yeuk-Yin Chan, Subrata Mitra, Lampros Flokas, Eugene Wu \\
+    \textit{VLDB 2025}
+
+    \item \layerdot{systemAccent}\ \textbf{Accelerating Deletion Interventions on OLAP Workload} \\
+    Haneen Mohammed, Alexander Yao, Lampros Flokas, Hongbin Zhong, Charlie Summers, Eugene Wu \\
+    \textit{ICDE 2024}
+
+    \item \layerdot{systemAccent}\ \textbf{PECJ: Stream Window Join on Disorder Data Streams with Proactive Error Compensation} \\
+    Xianzhi Zeng, Shuhao Zhang, Hongbin Zhong, Hao Zhang, Mian Lu, Zhao Zheng, Yuqiang Chen \\
+    \textit{SIGMOD 2024}
+\end{enumerate}
+
+
+\section*{Experience}
+\begin{onecolentry}
+    \layerdot{aiAccent}\, AI-Focused Work \hspace{1cm}
+    \layerdot{systemAccent}\, Systems-Focused Work
+\end{onecolentry}
+
+\vspace{0.2 cm}
+\begin{twocolentry}{May 2025 -- Aug 2025}
+    \layerdot{aiAccent}\ \textbf{Microsoft Research}, Redmond, WA \\
+    \textbf{Research Intern} \\
+    \textit{Mentors: Adriana Szekeres, Suman Nath}
+\end{twocolentry}
+\begin{highlights}
+    \item Architected the Beyond Screenshots WebAgent planner/memory stack so a single LLM pass emits a full sketch program for execution.
+    \item Lifted WebArena task success to \textbf{\textasciitilde90\%} (up from \textasciitilde50\%) by coupling state-machine memory with programmatic planning.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Aug 2024 -- Present}
+    \layerdot{systemAccent}\ \textbf{Georgia Institute of Technology}, Atlanta, GA \\
+    \textbf{Research Assistant} \\
+    \textit{Advisor: Kexin Rong; Collaboration: VMware Systems Group}
+\end{twocolentry}
+\begin{highlights}
+    \item Built a dynamic partitioning framework for RBAC-secure vector databases, reaching \textbf{13.5x} faster queries with \textbf{90\%} less memory.
+    \item Co-designed an RBAC-aware batching scheduler that aligns vector retrieval with LLM inference to boost RAG throughput.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Mar 2024 -- Apr 2024}
+    \layerdot{systemAccent}\ \textbf{InfiniFlow (Vector Database Startup)} \\
+    \textbf{Database Internals Engineer Intern}
+\end{twocolentry}
+\begin{highlights}
+    \item Reworked timestamp persistence to avoid redundant `txn\_map` access, reducing critical-path latency.
+    \item Streamlined bulk deletion cleanup, cutting file I/O and compaction cost for vector segments.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Feb 2024 -- Apr 2024}
+    \layerdot{aiAccent}\ \textbf{4Paradigm} \\
+    \textbf{Full Stack Software Engineer Intern (Part-Time)}
+\end{twocolentry}
+\begin{highlights}
+    \item Tuned cache strategy for the AI assistant service, lowering response latency and server overhead.
+    \item Delivered community feature workflows and async schedulers to automate data refresh.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Jul 2023 -- Nov 2023}
+    \layerdot{systemAccent}\ \textbf{Columbia University}, New York City, NY \\
+    \textbf{Research Assistant} \\
+    \textit{Advisor: Eugene Wu}
+\end{twocolentry}
+\begin{highlights}
+    \item Optimized sparse matrix evaluations for FADE, tightening end-to-end throughput for hypothetical queries.
+    \item Deployed SIMD and multithreaded execution for provenance workloads, achieving near-linear 8x speedups.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Jun 2023 -- Sep 2023}
+    \layerdot{systemAccent}\ \textbf{Rutgers University}, New Brunswick, NJ \\
+    \textbf{Research Assistant} \\
+    \textit{Advisor: Dong Deng}
+\end{twocolentry}
+\begin{highlights}
+    \item Implemented baseline similarity search pipelines and orchestrated large experiment runs.
+    \item Parallelized group-function analytics, improving CPU utilization across data partitions.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Jan 2023 -- Jul 2023}
+    \layerdot{systemAccent}\ \textbf{Nanyang Technological University / 4Paradigm}, Singapore \\
+    \textbf{Research Assistant} \\
+    \textit{Advisors: Mian Lu, Shuhao Zhang}
+\end{twocolentry}
+\begin{highlights}
+    \item Engineered a low-latency stream processing stack resilient to disorder and out-of-order arrivals.
+    \item Applied Bayesian variational inference with transformer encoders to model complex event streams.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+\begin{twocolentry}{Apr 2022 -- Sep 2022}
+    \layerdot{systemAccent}\ \textbf{Meituan}, Beijing, China \\
+    \textbf{Backend Software Engineer Intern}
+\end{twocolentry}
+\begin{highlights}
+    \item Shipped foundational backend for the Meituan short-video product, supporting new content formats.
+    \item Built Kafka/Hive reporting pipelines to feed recommendation models and periodic refresh logic for low-bandwidth users.
+\end{highlights}
+
+\vspace{0.2 cm}
+
+    \section{Technologies}
+
+
+
+        \begin{onecolentry}
+            \textbf{Languages:} C++, C, Python, Java, SQL, Rust
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Mastery (First-Author + only student Author experience):} AI agent cognitive architectures (memory, planners, LLM Reasoning), vector database, LLM Inference-RAG co-optimization, large-scale optimization modeling for data systems
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+    
+
+\end{document}
