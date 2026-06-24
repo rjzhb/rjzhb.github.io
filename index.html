@@ -55,7 +55,7 @@
 
 <h2>Biography</h2>
 <p>
-    I am a second-year PhD student at <a href="https://en.wikipedia.org/wiki/Georgia_Tech">Georgia Tech</a>, advised by <a href="https://kexinrong.github.io/">Prof. Kexin Rong</a>. I work on <strong>LLM agents</strong>, <strong>efficient AI</strong> (diffusion/flow models and LLMs), and <strong>storage systems</strong>.
+    I am a second-year PhD student at <a href="https://en.wikipedia.org/wiki/Georgia_Tech">Georgia Tech</a>, advised by <a href="https://kexinrong.github.io/">Prof. Kexin Rong</a>. I work on <strong>LLM Inference, LLM Agents</strong>. Previously, I also did research on <strong>database systems</strong>.
 
 </p>
 <!-- <p>
@@ -75,37 +75,38 @@
 </ul>
 </div> -->
 
-<h2> Preprint and Draft </h2>
+<h2>Open Source Projects</h2>
 <div class="publication">
-    <p><b>Beyond Screenshots: An Dynamic State-Machine Memory and Global Programmatic Planner for WebAgents</b></p>
-    <p><b>Hongbin Zhong*</b> with Microsoft Research People</p>
-    <span style="color: #c75b14;">(Collaboration with Microsoft Research)</span>
-    <!-- <p><em>arxiv 2025(Under Revision in SIGMOD 2026)</em></p>
-    <p>[<a href="https://arxiv.org/abs/2505.01538">paper</a>] -->
-</div>
-
-<div class="publication">
-    <p><b>StreamFlow: Theory, Algorithm, and Implementation for High-Efficiency Rectified Flow Generation</b></p>
-    <p>Sen Fang*, <b>Hongbin Zhong*</b>, Yalin Feng, Dimitris N. Metaxas</p>
-    <p><em>submitted to ICML 2026</em></p>
+    <p><b><a href="https://github.com/lightseekorg/tokenspeed" target="_blank">TokenSpeed</a></b> <span style="color: #c75b14;">(Collaborator)</span></p>
+    <p>A speed-of-light LLM inference engine for agentic workloads, with TensorRT-LLM-level performance and vLLM-level usability. Features a local-SPMD modeling layer with a static parallelism compiler, a C++/Python finite-state-machine scheduler with type-safe KV-cache reuse, and a pluggable kernel system including one of the fastest MLA implementations on Blackwell.</p>
     <p>
-        [<a href="https://www.arxiv.org/abs/2511.22009">paper</a>]
-    </p>
-</div>
-
-<div class="publication">
-    <p><b>Stable Signer: Hierarchical Sign Language Generative Model</b></p>
-    <p>Sen Fang*, Yalin Feng*, <b>Hongbin Zhong</b>, Yanxin Zhang, Dimitris N. Metaxas</p>
-    <p><em>submitted to ACL 2026</em></p>
-    <p>
-        [<a href="https://arxiv.org/abs/2512.04048">paper</a>]
+        [<a href="https://github.com/lightseekorg/tokenspeed" target="_blank">code</a>]
     </p>
 </div>
 
 <h2> Selected Publications </h2>
 <div class="publication">
+    <p><b>ActionEngine: From Reactive to Programmatic GUI Agents via State Machine Memory</b></p>
+    <p>Hongbin Zhong, Fazle Faisal, Luis França, Tanakorn Leesatapornwongsa, Adriana Szekeres, Kexin Rong, Suman Nath</p>
+    <p><em>submitted to SOSP</em></p>
+    <span style="color: #c75b14;">(Collaboration with Microsoft Research)</span>
+</div>
+
+<div class="publication">
+    <p><b>StreamFlow: Theory, Algorithm, and Implementation for High-Efficiency Rectified Flow Generation</b></p>
+    <p>Sen Fang*, Hongbin Zhong*, Yalin Feng, Dimitris N. Metaxas</p>
+    <p><em>ICML 2026</em></p>
+</div>
+
+<div class="publication">
+    <p><b>Stable Signer: Hierarchical Sign Language Generative Model</b></p>
+    <p>Sen Fang*, Yalin Feng*, Hongbin Zhong, Yanxin Zhang, Dimitris N. Metaxas</p>
+    <p><em>ACL 2026</em></p>
+    <p><span style="color: #c75b14;">🏆 ACL 2026 Best Paper Nomination</span></p>
+</div>
+<div class="publication">
     <p><b>HoneyBee: Efficient Role-based Access Control for Vector Databases via Dynamic Partitioning</b></p>
-    <p><b>Hongbin Zhong*</b>, Matthew Lentz, Nina Narodytska, Adriana Szekeres, Kexin Rong</p>
+    <p>Hongbin Zhong, Matthew Lentz, Nina Narodytska, Adriana Szekeres, Kexin Rong</p>
     <p><em>SIGMOD 2026</em></p>
     <p>
         [<a href="https://arxiv.org/abs/2505.01538">paper</a>]
@@ -116,13 +117,13 @@
 
 <div class="publication">
     <p><b>Fast Hypothetical Updates Evaluation</b></p>
-    <p>Haneen Mohammed*, Alexander Yao*, Charlie Summers*, <b>Hongbin Zhong</b>, Gromit Yeuk-Yin Chan, Sub- rata Mitra, Lampros Flokas, Eugene Wu</p>
+    <p>Haneen Mohammed*, Alexander Yao*, Charlie Summers*, Hongbin Zhong, Gromit Yeuk-Yin Chan, Sub- rata Mitra, Lampros Flokas, Eugene Wu</p>
     <p><em>SIGMOD 2025 DEMO</em></p>
 </div>
 
 <div class="publication">
     <p><b>FaDE: More Than a Million What-ifs Per Second</b></p>
-    <p>Haneen Mohammed*, Alexander Yao*, Charlie Summers*, <b>Hongbin Zhong</b>, Gromit Yeuk-Yin Chan, Subrata Mitra, Lampros Flokas, Eugene Wu</p>
+    <p>Haneen Mohammed*, Alexander Yao*, Charlie Summers*, Hongbin Zhong, Gromit Yeuk-Yin Chan, Subrata Mitra, Lampros Flokas, Eugene Wu</p>
     <p><em>VLDB 2025</em></p>
     <p>
         [<a href="https://github.com/cudbg/whatifs">code</a>] 
@@ -132,13 +133,13 @@
 
 <div class="publication">
     <p><b>Accelerating Deletion Interventions on OLAP Workload</b></p>
-    <p>Haneen Mohammed, Alexander Yao, Lampros Flokas,<b>Hongbin Zhong</b>, Charlie Summers, Eugene Wu</p>
+    <p>Haneen Mohammed, Alexander Yao, Lampros Flokas, Hongbin Zhong, Charlie Summers, Eugene Wu</p>
     <p><em>ICDE 2024</em></p>
 </div>
 
 <div class="publication">
     <p><b>PECJ: Stream Window Join on Disorder Data Streams with Proactive Error Compensation</b></p>
-    <p>Xianzhi Zeng*, Shuhao Zhang, <b>Hongbin Zhong</b>, Hao Zhang, Mian Lu, Zhao Zheng, Yuqiang Chen</p>
+    <p>Xianzhi Zeng*, Shuhao Zhang, Hongbin Zhong, Hao Zhang, Mian Lu, Zhao Zheng, Yuqiang Chen</p>
     <p><em>SIGMOD 2024</em></p>
     <p>
         [<a href="https://dl.acm.org/doi/pdf/10.1145/3639268">paper</a>] 
@@ -147,48 +148,26 @@
     </p>
 </div>
 
-<h2>Experience</h2>
+<h2>Selected Experience</h2>
 <table id="tbPublications" width="100%">
     <tbody>
         <tr>
             <td valign="top">
+                <p><b>Together AI</b></p>
+                <p>Research Intern</p>
+                <p>May. 2026 - Present, San Francisco Bay Area, US · On-site</p>
+                <em>Focus: Work on the open-source inference engine <a href="https://github.com/lightseekorg/tokenspeed" target="_blank">TokenSpeed</a> — efficient LLM inference including long-context decoding, KV-cache management, and GPU-efficient execution (LLM Infra).</em>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 30px;"></td>
+        </tr>
+        <tr>
+            <td valign="top">
                 <p><b>Microsoft Research</b></p>
-                <p>May. 2025 - Aug. 2025, Redmond, Seattle, US</p>
-                <p>closely worked with Adriana Szekeres, Suman Nath</p>
-                <em>Focus: Architected the Beyond Screenshots WebAgent planner/memory stack, raising WebArena success to ~90%.</em>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="height: 30px;"></td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <p><b>Georgia Institute of Technology</b></p>
-                <p>Aug. 2024 - Present, Atlanta, US</p>
-                <p>Advisor: <a href="https://kexinrong.github.io/" target="_blank">Kexin Rong</a>; Collaboration with VMware Systems Group</p>
-                <em>Focus: Built RBAC-aware vector database partitioning (13.5x faster, 90% less memory) and joint batching for RAG pipelines.</em>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="height: 30px;"></td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <p><b>InfiniFlow</b></p>
-                <p>Apr. 2024 - Jun. 2024, Shanghai, China</p>
-                <p>Vector Databases Contributor</p>
-                <em>Focus: Reworked timestamp persistence and bulk-deletion cleanup to cut vector storage latency and I/O.</em>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="height: 30px;"></td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <p><b>4Paradigm</b></p>
-                <p>Feb. 2024 - Jun. 2024</p>
-                <p>Part-time Full-stack Engineer Intern</p>
-                <em>Focus: Tuned AI assistant caching for lower latency and shipped async community features with scheduled refresh.</em>
+                <p>Research Intern</p>
+                <p>May. 2025 - Aug. 2025, Seattle, Washington, US · On-site</p>
+                <em>Focus: Planning and Reasoning for GUI Agent (AI Agents).</em>
             </td>
         </tr>
         <tr>
@@ -197,9 +176,10 @@
         <tr>
             <td valign="top">
                 <p><b>Columbia University</b></p>
-                <p>Jul. 2023 - Dec. 2023, New York, US</p>
+                <p>Research Intern</p>
+                <p>Jul. 2023 - Dec. 2023, New York, US · Remote</p>
                 <p>closely worked with <a href="https://www.cs.columbia.edu/~ewu/" target="_blank">Eugene Wu</a></p>
-                <em>Focus: Optimized FADE sparse-matrix evaluation with SIMD/multithreading for near-linear 8x speedups.</em>
+                <em>Focus: Databases, C++/C.</em>
             </td>
         </tr>
         <tr>
@@ -207,20 +187,10 @@
         </tr>
         <tr>
             <td valign="top">
-                <p><b>Rutgers University</b></p>
-                <p>Jun. 2023 - Sep. 2023</p>
-                <p>closely worked with <a href="https://people.cs.rutgers.edu/~dd903/" target="_blank">Dong Deng</a></p>
-                <em>Focus: Implemented similarity-search baselines and parallel group-function analytics pipelines.</em>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" style="height: 30px;"></td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <p><b>Nanyang Technological University</b></p>
-                <p>Jan. 2023 - Jul. 2023</p>
-                <em>Focus: Built low-latency disorder stream processing and Bayesian variational inference for complex event data.</em>
+                <p><b>4Paradigm 第四范式</b></p>
+                <p>Research Intern</p>
+                <p>Feb. 2023 - Jul. 2023, Beijing, China · Remote</p>
+                <em>Focus: AI Infra.</em>
             </td>
         </tr>
         <tr>
@@ -229,9 +199,9 @@
         <tr>
             <td valign="top">
                 <p><b>Meituan</b></p>
-                <p>Apr. 2022 - Sep. 2022, Beijing, China</p>
-                <p>Backend Engineer Intern</p>
-                <em>Focus: Delivered short-video backend features, Kafka/Hive recommendation pipelines, and periodic refresh for low-bandwidth users.</em>
+                <p>Software Engineer</p>
+                <p>Apr. 2022 - Sep. 2022, Beijing, China · On-site</p>
+                <em>Focus: Back-End Web Development and Java.</em>
             </td>
         </tr>
     </tbody>
