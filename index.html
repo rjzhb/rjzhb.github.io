@@ -254,7 +254,23 @@
 <br>
 <br>
 <div style="width: 50%; height: auto; margin: auto;">
-	<script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=VqPzLkTolX1LgWgCBvhrhhBBDDpS_yLFhuihv2ObKZ4&cl=ffffff&w=a"></script>
+	<script type="text/javascript">
+	(function () {
+		// Owner opt-out: visit https://rjzhb.github.io/?notrack=1 once to stop counting this
+		// browser; visit ?notrack=0 to start counting again.
+		try {
+			var q = new URLSearchParams(window.location.search);
+			if (q.get('notrack') === '1') localStorage.setItem('mmv_optout', '1');
+			if (q.get('notrack') === '0') localStorage.removeItem('mmv_optout');
+			if (localStorage.getItem('mmv_optout') === '1') return;
+		} catch (e) {}
+		var s = document.createElement('script');
+		s.type = 'text/javascript';
+		s.id = 'mapmyvisitors';
+		s.src = '//mapmyvisitors.com/map.js?d=VqPzLkTolX1LgWgCBvhrhhBBDDpS_yLFhuihv2ObKZ4&cl=ffffff&w=a';
+		document.currentScript.parentNode.insertBefore(s, document.currentScript);
+	})();
+	</script>
 </div>
 <p><center> &copy; Hongbin Zhong </center></p>
 
